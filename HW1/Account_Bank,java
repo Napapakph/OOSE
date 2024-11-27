@@ -1,0 +1,103 @@
+import java.util.Scanner;
+
+public class Account_Bank {
+    Scanner input = new Scanner(System.in);
+    private static Account_Bank[] accounts; // Array เก็บบัญชีทั้งหมด
+    private int number;
+    private String accountID;
+    private String nameID;
+    private String password;
+    private int balance;
+
+    //constructor
+
+    public Account_Bank(String accountID,String password){
+        this.accountID = accountID;
+        this.password = password;
+    }
+
+
+    public void createAccount(){
+        do{
+            System.out.print("Step 1. Enter amount of all accountID = ");
+            number = input.nextInt();
+            input.nextLine(); // เคลียร์ buffer หลังจากรับ int
+            if(number>5){
+                System.out.println("Please enter less than or equal to 5 accountIDs.");
+            }
+        }while(number>5);
+        accounts = new Account_Bank[number]; 
+        
+        System.out.println("Step 2. Enter Detail od each accountID \n");
+
+        for (int i=0; i<number ; i++){
+
+                System.out.println("No."+(i+1));
+                do{
+                    System.out.print("accountID ID = ");
+                    accountID = input.nextLine();
+
+                   // ตรวจสอบความยาวและรูปแบบ (ต้องเป็นตัวเลขทั้งหมด)
+                    if (accountID.length() != 13 || !accountID.matches("\\d+")) {
+                        System.out.println("Invalid accountID number. Please enter exactly 13 digits.");
+                    }
+                }while(accountID.length() != 13 || !accountID.matches("\\d+"));//เช็คว่าครบ 13 หลักมั้ย
+
+                do{
+                    System.out.print("accountID nameID = ");
+                    nameID = input.nextLine();
+                    if (accountID.length() > 50 ) {
+                        System.out.println("Please enter nameID less than 50 character.");
+                    }
+                }while(accountID.length() > 50);
+
+                do {
+                    System.out.print("Password = ");
+                    password = input.nextLine();
+                    if(password.length() != 4 || !password.matches("\\d+")){
+                        System.out.println("Invalid accountID number.Please enter password within 4 digit");
+                    }
+                } while (password.length() != 4 || !password.matches("\\d+"));
+
+                do {
+                    System.out.print("Balance = ");
+                    balance = input.nextInt();
+                    input.nextLine(); // เคลียร์ buffer หลังจากรับ int
+                    if(balance >1000000){
+                        System.out.println("Please enter Balance less than 1000000 bath");
+                    }
+                } while (balance >1000000);
+
+                accounts[i] = new Account_Bank(accountID, password); // สร้างบัญชีและเพิ่มลง array
+                
+                System.out.println();
+
+            }
+
+            
+
+    }
+
+    public String getAccountID(){
+        return this.accountID;
+    }
+
+    public String getNameID(){
+        return this.nameID;
+    }
+
+    public String getPassword(){
+        return this.password;
+    }
+
+    public Integer getBalance(){
+        return this.balance;
+    }
+
+     // Method สำหรับดึง array ของบัญชี
+    public static Account_Bank[] getAccounts() {
+        return accounts;
+    }
+
+
+}
