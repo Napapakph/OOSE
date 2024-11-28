@@ -4,12 +4,18 @@ public class ATM {
 
     Scanner scanner = new Scanner(System.in);
     private Account_Bank[] accounts;
+    private String account;
+    private String password;
+    private String name;
+    private int balance;
 
     // รับ Account จากภายนอก
     // Constructor สำหรับกำหนดค่า accounts โดยเรียกใช้ getAccounts()
     public ATM() {
-        this.accounts = Account_Bank.getAccounts(); 
+        this.accounts = Account_Bank.getAccounts();
     }
+
+    public Account_Bank account_Bank = new Account_Bank(account, password, name, balance);
 
     public void detail() {
 
@@ -19,11 +25,9 @@ public class ATM {
         }
 
         System.out.println("ATM ComputerThanyaburi Bank");
-        String account;
-        String password;
 
         do {
-            System.out.print("accountID ID = ");
+            System.out.print("account ID = ");
             account = scanner.nextLine();
 
             // ตรวจสอบความยาวและรูปแบบ (ต้องเป็นตัวเลขทั้งหมด)
@@ -49,17 +53,74 @@ public class ATM {
             }
         }
 
+        int count_mistake = 0;
         // แสดงผลลัพธ์
         if (passed) {
-            System.out.println("Menu Service");
-            System.out.println("1. Account Balance \n2. Withdrawal \n3. Exit \n");
-
-            System.out.print("Choose");
-            int choose = scanner.nextInt();
+            menu();
 
         } else {
-            System.out.println("Invalid ID or Password.");
+            System.out.println("Account ID and Password don't match \n");
+            if (count_mistake >= 3) {
+                System.err.println(
+                        "ERROR You entered Account ID and Password don't match 3 times, \n .\n.\n. \nlogged out");
+            }
+            count_mistake += 1;
+            detail();
         }
+
+    }
+
+    public void menu() {
+        System.out.println("\nMenu Service");
+        System.out.println("1. Account Balance \n2. Withdrawal \n3. Exit \n");
+        System.out.print("Choose : ");
+        int choose = scanner.nextInt();
+
+        switch (choose) {
+            case 1:
+                System.out.println("--- Account Balance ---");
+                accountBalancec(account);
+                break;
+            case 2:
+                System.out.println("--- Withdrawal ---");
+                withdrawal(account);
+                break;
+            case 3:
+                System.out.println("--- Exit ---");
+                break;
+            default:
+                break;
+        }
+
+    }
+
+    public void accountBalancec(String accountID) {
+        for (Account_Bank accountCheck : accounts) {
+            if (accountCheck.getAccountID().equals(accountID)) {
+                balance = accountCheck.getBalance();
+                System.out.println("balance all = " + balance);
+            }
+        }
+        menu();
+    }
+
+    public void withdrawal(String accountID) {
+        for (Account_Bank accountCheck : accounts) {
+            if (accountCheck.getAccountID().equals(accountID)) {
+                balance = accountCheck.getBalance();
+            }
+        }
+        System.out.print("Enter amount to withdraw : ");
+        int amount_withdraw = scanner.nextInt();
+        if (amount_withdraw > balance) {
+            System.out.println("The amount is not enough. Please make a new transaction.");
+
+        }
+        balance = balance - amount_withdraw;
+        System.out.println("Balance = " + balance);
+    }
+
+    public void exit() {
 
     }
 
