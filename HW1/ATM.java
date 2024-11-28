@@ -56,7 +56,7 @@ public class ATM {
         int count_mistake = 0;
         // แสดงผลลัพธ์
         if (passed) {
-            menu();
+            menu(account);
 
         } else {
             System.out.println("Account ID and Password don't match \n");
@@ -70,8 +70,15 @@ public class ATM {
 
     }
 
-    public void menu() {
-        System.out.println("\nMenu Service");
+public void menu(String accountID) {
+        System.out.println("ATM ComputerThanyaburi Bank");
+            for (Account_Bank accountCheck : accounts) {
+                if (accountCheck.getAccountID().equals(accountID)) {
+                    accountID = accountCheck.getAccountID();
+                }
+            }
+        System.out.println("\nAccount ID : " +accountID);
+        System.out.println("Menu Service");
         System.out.println("1. Account Balance \n2. Withdrawal \n3. Exit \n");
         System.out.print("Choose : ");
         int choose = scanner.nextInt();
@@ -87,6 +94,7 @@ public class ATM {
                 break;
             case 3:
                 System.out.println("--- Exit ---");
+                exit();
                 break;
             default:
                 break;
