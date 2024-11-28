@@ -10,10 +10,11 @@ public class Account_Bank {
     private int balance;
 
     //constructor
-
-    public Account_Bank(String accountID,String password){
+    public Account_Bank(String accountID,String password,String nameID,int balance){
         this.accountID = accountID;
         this.password = password;
+        this.nameID = nameID;
+        this.balance = balance;
     }
 
 
@@ -23,7 +24,7 @@ public class Account_Bank {
             number = input.nextInt();
             input.nextLine(); // เคลียร์ buffer หลังจากรับ int
             if(number>5){
-                System.out.println("Please enter less than or equal to 5 accountIDs.");
+                System.out.println("Please enter more than or equal to 5 accountIDs.");
             }
         }while(number>5);
         accounts = new Account_Bank[number]; 
@@ -31,10 +32,9 @@ public class Account_Bank {
         System.out.println("Step 2. Enter Detail od each accountID \n");
 
         for (int i=0; i<number ; i++){
-
                 System.out.println("No."+(i+1));
                 do{
-                    System.out.print("accountID ID = ");
+                    System.out.print("account ID = ");
                     accountID = input.nextLine();
 
                    // ตรวจสอบความยาวและรูปแบบ (ต้องเป็นตัวเลขทั้งหมด)
@@ -44,7 +44,7 @@ public class Account_Bank {
                 }while(accountID.length() != 13 || !accountID.matches("\\d+"));//เช็คว่าครบ 13 หลักมั้ย
 
                 do{
-                    System.out.print("accountID nameID = ");
+                    System.out.print("name ID = ");
                     nameID = input.nextLine();
                     if (accountID.length() > 50 ) {
                         System.out.println("Please enter nameID less than 50 character.");
@@ -68,13 +68,12 @@ public class Account_Bank {
                     }
                 } while (balance >1000000);
 
-                accounts[i] = new Account_Bank(accountID, password); // สร้างบัญชีและเพิ่มลง array
+                accounts[i] = new Account_Bank(accountID, password,nameID,balance); // สร้างบัญชีและเพิ่มลง array
                 
                 System.out.println();
 
             }
 
-            
 
     }
 
