@@ -1,6 +1,7 @@
 # OOSE
 
-In Homework 1, the task about creating the relationship between creating a bank account and using an ATM
+In Homework 1
+the task about creating the relationship between creating a bank account and using an ATM
 with the following specifications:
 
 - Bank Account Creation: Users can choose how many bank accounts to create.
