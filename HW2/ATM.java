@@ -1,33 +1,6 @@
 import java.util.Scanner;
 
 public class ATM implements ATMService {
-        // Implement เมธอดจาก ATMService เช่น:
-        @Override
-        public void checkBalance(String accountID) {
-            checkable(accountID); // ใช้เมธอดเดิม
-        }
-    
-        @Override
-        public void withdraw(String accountID) {
-            withdrawalable(accountID); // ใช้เมธอดเดิม
-        }
-    
-        @Override
-        public void deposit(String accountID) {
-            depositeable(accountID); // ใช้เมธอดเดิม
-        }
-    
-        @Override
-        public void transfer(Account_Bank sourceAccount) {
-            tranferable(sourceAccount); // ใช้เมธอดเดิม
-        }
-    
-        @Override
-        public void exit() {
-            exitable();
-        }
-    
-
     private Scanner scanner = new Scanner(System.in);
     private Account_Bank[] accounts;
     private String account;
@@ -173,14 +146,14 @@ public class ATM implements ATMService {
                 break;
             case 5:
                 System.out.println("--- Exit ---");
-                exit();
+                exitable();
                 break;
             default:
                 break;
         }
 
     }
-
+    @Override
     public void checkable(String accountID) {
         for (Account_Bank accountCheck : accounts) {
             if (accountCheck.getAccountID().equals(accountID)) {
@@ -192,6 +165,7 @@ public class ATM implements ATMService {
         menu(accountID);
     }
 
+    @Override
     public void withdrawalable(String accountID) {
         Account_Bank sourceAccount = null;
         for (Account_Bank accountCheck : accounts) {
@@ -213,6 +187,7 @@ public class ATM implements ATMService {
         menu(accountID);
     }
     
+    @Override
     public void depositeable(String accountID){
             Account_Bank sourceAccount = null;
 
@@ -232,6 +207,7 @@ public class ATM implements ATMService {
         menu(accountID);
     }
 
+    @Override
     public void tranferable(Account_Bank sourceAccount){
         System.out.println("Account List !");
         // แสดงบัญชีทั้งหมดใน Array
@@ -295,6 +271,7 @@ public class ATM implements ATMService {
         menu(sourceAccount.getAccountID());
     }
 
+    @Override
     public void exitable() {
         System.exit(0); // หยุดการทำงานของโปรแกรมทั้งหมด
     }
