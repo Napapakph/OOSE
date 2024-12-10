@@ -1,6 +1,32 @@
 import java.util.Scanner;
 
-public class ATM {
+public class ATM implements ATMService {
+        // Implement เมธอดจาก ATMService เช่น:
+        @Override
+        public void checkBalance(String accountID) {
+            checkable(accountID); // ใช้เมธอดเดิม
+        }
+    
+        @Override
+        public void withdraw(String accountID) {
+            withdrawalable(accountID); // ใช้เมธอดเดิม
+        }
+    
+        @Override
+        public void deposit(String accountID) {
+            depositeable(accountID); // ใช้เมธอดเดิม
+        }
+    
+        @Override
+        public void transfer(Account_Bank sourceAccount) {
+            tranferable(sourceAccount); // ใช้เมธอดเดิม
+        }
+    
+        @Override
+        public void exit() {
+            exitable();
+        }
+    
 
     private Scanner scanner = new Scanner(System.in);
     private Account_Bank[] accounts;
@@ -248,7 +274,7 @@ public class ATM {
 
             break;
         }while(true);
-        
+
         System.out.print("Enter Amount to Transfer: ");
         double amount = scanner.nextDouble();
 
@@ -269,7 +295,7 @@ public class ATM {
         menu(sourceAccount.getAccountID());
     }
 
-    public void exit() {
+    public void exitable() {
         System.exit(0); // หยุดการทำงานของโปรแกรมทั้งหมด
     }
 
