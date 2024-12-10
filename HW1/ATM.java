@@ -129,7 +129,7 @@ public void menu(String accountID) {
     }
 
     public void exit() {
-
+        System.exit(0); // หยุดการทำงานของโปรแกรมทั้งหมด
     }
 
 }
