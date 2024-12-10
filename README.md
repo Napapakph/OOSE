@@ -1,9 +1,9 @@
 # OOSE
 
-In Homework 1, the task involves creating a class to establish the relationship between creating a bank account and using an ATM, with the following specifications:
+In Homework 1, the task about creating the relationship between creating a bank account and using an ATM
+with the following specifications:
 
 - Bank Account Creation: Users can choose how many bank accounts to create.
-
 - Account_Bank Class: This class is responsible for creating bank accounts with the following properties:
     A 13-digit account number.
     A name with a maximum of 50 characters.
