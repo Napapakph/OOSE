@@ -130,7 +130,7 @@ public class ATM {
 
         switch (choose) {
             case 1:
-                System.out.println("--- Account Balance ---");
+                System.out.println("--- check Balnace ---");
                 checkable(sourceAccount.getAccountID());
                 break;
             case 2:
@@ -138,11 +138,11 @@ public class ATM {
                 withdrawalable(sourceAccount.getAccountID());
                 break;
             case 3:
-                System.out.println("--- depositeable ---");
+                System.out.println("--- deposite ---");
                 depositeable(sourceAccount.getAccountID());
                 break;
             case 4:
-                System.out.println("--- tranferable ---");
+                System.out.println("--- tranfer ---");
                 tranferable(sourceAccount);
                 break;
             case 5:
