@@ -18,6 +18,11 @@ with the following specifications:
   2. Withdrawing money.
   3. Logging out.
 
+In Homework 2
+the task about Adding 3 class sush as 
+    - Class Person : have Data about Identification , name-surname and gender
+    - Class Account : extends from Person and have data Login, password and Balance in account
+    - Class Manager : extends from Person and have data Login and password 
 
 
 
